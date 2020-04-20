@@ -25,6 +25,8 @@ List<Person> osoby = new ArrayList<>();
         request.getRequestDispatcher("personList.jsp").forward(request, response);
    
     }
+    
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
         String imie = request.getParameter("imie");
