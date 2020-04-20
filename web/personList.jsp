@@ -35,7 +35,7 @@
             </c:forEach>
         </table>
         <br>
-        <form action='/Lab5/personList' method='post'>
+        <form action='/LAB5/personList' method='post'>
             Podaj imie:
             <input type='text' name='imie'>
             Podaj nazwisko:
