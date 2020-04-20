@@ -19,12 +19,6 @@ List<Person> osoby = new ArrayList<>();
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     HttpSession session = request.getSession();
     ClearSessionAtributes(session);
-//    if(session.getAttribute("Counter") == null){
-//        a=1;
-//    }
-//    if(session.getAttribute("lista") == null){
-//        osoby = new ArrayList<>();
-//    }
     a++;
     response.setContentType("text/html");
     response.setCharacterEncoding("UTF-8");
@@ -49,7 +43,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     session.setAttribute("Counter", a);
     session.setAttribute("lista", osoby);
     request.getRequestDispatcher("personList.jsp").forward(request, response);
-    //response.sendRedirect("/LAB5/personList");
 
 }
 
