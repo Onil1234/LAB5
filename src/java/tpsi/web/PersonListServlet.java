@@ -1,8 +1,6 @@
-
 package tpsi.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -36,7 +34,7 @@ List<Person> osoby = new ArrayList<>();
             osoby.add(new Person(imie, nazwisko, email));
         }
         
-        response.sendRedirect("/Lab5/personList");
+        response.sendRedirect("/LAB5/personList");
         
     }
     
