@@ -35,8 +35,8 @@ List<Person> osoby = new ArrayList<>();
         if(!email.isEmpty()&&!nazwisko.isEmpty()&&!imie.isEmpty()){
             osoby.add(new Person(imie, nazwisko, email));
         }
-        
-        response.sendRedirect("/LAB5/personList");
+        request.getRequestDispatcher("personList.jsp").forward(request, response);
+        //response.sendRedirect("/LAB5/personList");
         
     }
     
