@@ -29,7 +29,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     
     
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-HttpSession session = request.getSession();
+    HttpSession session = request.getSession();
     session.setAttribute("Counter", a);
     String imie = request.getParameter("imie");
     String nazwisko = request.getParameter("nazwisko");
