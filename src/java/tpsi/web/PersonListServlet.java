@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 public class PersonListServlet extends HttpServlet {
 int a=1;
 List<Person> osoby = new ArrayList<>();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.setAttribute("Counter", a);
@@ -28,13 +29,15 @@ List<Person> osoby = new ArrayList<>();
     
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
+    HttpSession session = request.getSession();
+        session.setAttribute("Counter", a);
         String imie = request.getParameter("imie");
         String nazwisko = request.getParameter("nazwisko");
         String email = request.getParameter("email");
         if(!email.isEmpty()&&!nazwisko.isEmpty()&&!imie.isEmpty()){
             osoby.add(new Person(imie, nazwisko, email));
         }
+        a++;
         request.getRequestDispatcher("personList.jsp").forward(request, response);
         //response.sendRedirect("/LAB5/personList");
         
