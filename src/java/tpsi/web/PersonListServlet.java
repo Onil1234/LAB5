@@ -21,7 +21,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     int a;
     //List<Person> osoby = (List<Person>) request.getAttribute("lista");
     if(session.getAttribute("Counter") == null){
-        a=0;
+        a=1;
     }else {
         
         a = (Integer) session.getAttribute("Counter");
@@ -45,7 +45,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     int  a;
     //ClearSessionAtributes(session, a, osoby);
     if(session.getAttribute("Counter") == null){
-        a=0;
+        a=1;
     }else {
         
         a = (Integer) session.getAttribute("Counter");
