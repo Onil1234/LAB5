@@ -64,8 +64,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             osoby = (List<Person>)session.getAttribute("lista");
         }
     
-    
-    osoby.add(osoba);
+    if(!email.isEmpty()&&!nazwisko.isEmpty()&&!imie.isEmpty()){
+        osoby.add(osoba);
+        
+    }
 
     session.setAttribute("Counter", a);
     session.setAttribute("lista", osoby);
