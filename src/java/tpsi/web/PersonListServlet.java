@@ -13,17 +13,28 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "PersonListServlet", urlPatterns = {"/personList"})
 public class PersonListServlet extends HttpServlet {
-int a=0;
-List<Person> osoby = new ArrayList<>();
+
 
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     HttpSession session = request.getSession();
-    ClearSessionAtributes(session);
-    a++;
+    //Integer a = (Integer) request.getAttribute("Counter");
+    int a;
+    //List<Person> osoby = (List<Person>) request.getAttribute("lista");
+    if(session.getAttribute("Counter") == null){
+        a=0;
+    }else {
+        
+        a = (Integer) session.getAttribute("Counter");
+        a++;
+    }
+//    if( osoby == null){
+//        osoby = new ArrayList<>();
+//    }
+   
     response.setContentType("text/html");
     response.setCharacterEncoding("UTF-8");
     session.setAttribute("Counter", a);
-    session.setAttribute("lista", osoby);
+   // session.setAttribute("lista", osoby);
     request.getRequestDispatcher("personList.jsp").forward(request, response);
 
 }
@@ -31,31 +42,36 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     HttpSession session = request.getSession();
-    ClearSessionAtributes(session);
+    int  a;
+    //ClearSessionAtributes(session, a, osoby);
+    if(session.getAttribute("Counter") == null){
+        a=0;
+    }else {
+        
+        a = (Integer) session.getAttribute("Counter");
+        a++;
+    }
+
     String imie = request.getParameter("imie");
     String nazwisko = request.getParameter("nazwisko");
     String email = request.getParameter("email");
-    if(!email.isEmpty()&&!nazwisko.isEmpty()&&!imie.isEmpty()){
-        osoby.add(new Person(imie, nazwisko, email));
-        
-    }
-    a++;
+    
+    Person osoba = new Person(imie, nazwisko, email);
+    List<Person> osoby = new ArrayList<>();
+    
+    if (session.getAttribute("lista") != null)
+        {
+            osoby = (List<Person>)session.getAttribute("lista");
+        }
+    
+    
+    osoby.add(osoba);
+
     session.setAttribute("Counter", a);
     session.setAttribute("lista", osoby);
     request.getRequestDispatcher("personList.jsp").forward(request, response);
 
 }
-
-private void ClearSessionAtributes(HttpSession session){
-    
-    if(session.getAttribute("Counter") == null){
-        a=0;
-    }
-    if(session.getAttribute("lista") == null){
-        osoby = new ArrayList<>();
-    }
-}
-    
 
 
 }
